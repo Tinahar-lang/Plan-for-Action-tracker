@@ -1,0 +1,181 @@
+/* css/styles.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #388e3c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #2c6e2f;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+header img {
+    width: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #388e3c;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+main {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+button {
+    background-color: #66bb6a;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4caf50;
+}
+
+button:active {
+    background-color: #45a049;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button i {
+    margin-right: 8px;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #e8f5e9;
+    border-radius: 25px;
+    margin: 30px 0;
+    padding: 5px;
+}
+
+.progress-bar {
+    background-color: #c8e6c9;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background-color: #388e3c;
+    height: 30px;
+    width: 50%; /* Example width */
+    transition: width 0.5s ease-in-out;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+h3 {
+    font-size: 28px;
+    color: #388e3c;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 2px solid #c8e6c9;
+}
+
+table th {
+    background-color: #388e3c;
+    color: white;
+    font-size: 18px;
+}
+
+table td {
+    background-color: #f1f8e9;
+    font-size: 16px;
+}
+
+table tr:hover {
+    background-color: #e8f5e9;
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    font-size: 18px;
+    color: #388e3c;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #66bb6a;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+    table th, table td {
+        font-size: 14px;
+    }
+
+    .progress-bar-fill {
+        height: 20px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+
+

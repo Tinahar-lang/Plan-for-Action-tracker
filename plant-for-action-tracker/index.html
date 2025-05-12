@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plant-for-Action</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Welcome to Plant-for-Action</h1>
+    <button onclick="window.location.href='profile.html'">Profile</button>
+    <button onclick="window.location.href='login.html'">Logout</button>
+</header>
+<main>
+    <h2>Your Progress</h2>
+    <div id="progress">
+        <p>Points: <span id="points">150</span></p>
+        <p>Trees Planted: <span id="trees">5</span></p>
+        
+        <!-- Progress Bar for Tree Planting -->
+        <p>Progress to Plant a New Tree:</p>
+        <progress id="treeProgress" value="150" max="1000"></progress>
+        <p id="progressText">150/1000 points</p>
+    </div>
+
+    <h3>Log Sustainable Action</h3>
+    <button onclick="logAction('Recycling', 100)">Log Recycling (+100 pts)</button>
+    <button onclick="logAction('Public Transport', 200)">Log Public Transport (+200 pts)</button>
+
+    <h3>Leaderboard</h3>
+    <button onclick="window.location.href='leaderboard.html'">View Leaderboard</button>
+
+    <!-- Button to view virtual trees planted -->
+    <button onclick="window.location.href='virtual-trees.html'">View Virtual Trees Planted</button>
+
+    <ul id="leaderboard"></ul>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js"></script>
+
+<script>
+    // Update progress bar and points
+    updateProgress();
+
+    function updateProgress() {
+        const user = firebase.auth().currentUser;
+        const userRef = db.collection('users').doc(user.uid);
+
+        userRef.get().then(doc => {
+            if (doc.exists) {
+                const data = doc.data();
+                const points = data.points;
+                const trees = data.trees;
+
+                // Update progress bar
+                const progressBar = document.getElementById('treeProgress');
+                const progressText = document.getElementById('progressText');
+                progressBar.value = points;
+                progressText.textContent = `${points}/1000 points`;
+
+                // Update trees planted
+                document.getElementById('points').textContent = points;
+                document.getElementById('trees').textContent = trees;
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

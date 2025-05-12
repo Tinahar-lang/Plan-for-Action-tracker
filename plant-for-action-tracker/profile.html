@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile - Plant-for-Action</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+    <h1>Your Profile</h1>
+    <button onclick="window.location.href='index.html'">Home</button>
+</header>
+<main>
+    <p>Email: <span id="email"></span></p>
+    <p>Points: <span id="points"></span></p>
+    <p>Trees Planted: <span id="trees"></span></p>
+    <h3>Recent Actions:</h3>
+    <ul id="actions"></ul>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js"></script>
+<script>
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            db.collection('users').doc(user.uid).get().then(doc => {
+                const data = doc.data();
+                document.getElementById('email').textContent = user.email;
+                document.getElementById('points').textContent = data.points;
+                document.getElementById('trees').textContent = data.trees;
+
+                const actionsList = document.getElementById('actions');
+                actionsList.innerHTML = '';
+                data.actions.slice(-5).reverse().forEach(action => {
+                    const li = document.createElement('li');
+                    li.textContent = `${action.type} at ${new Date(action.timestamp).toLocaleString()}`;
+                    actionsList.appendChild(li);
+                });
+            });
+        } else {
+            window.location.href = 'login.html';
+        }
+    });
+</script>
+</body>
+</html>
